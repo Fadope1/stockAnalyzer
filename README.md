@@ -6,7 +6,7 @@ yfinance is a libary, I couldn't import it so I just downloaded it and importet 
 Todo:
 - Fix yfinance, at least for me
 - add a requirements.txt -> basicly what you need is yfinance, talib and some other minor stuff.
-- add news
-- first PDF page
+- add news for the given stock -> headlines
+- create good looking first PDF page
 - rest pdf pages containing stock data in all intervals with different indicators
 - fix some bugs and issues/ stupid code -> e.g. saving and then loading the PDF's seperatly.
