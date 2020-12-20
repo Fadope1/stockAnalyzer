@@ -53,7 +53,7 @@ class stock_data:
 
     def get_news(self, stock_name):
         # from stocknews import StockNews
-        # sn = StockNews(stock_name, wt_key="api_key", news_file=f'{stock_name}news.csv', summary_file='data.csv', save_news=True)
+        # sn = StockNews(stock_name, wt_key="7997ace6c0420600c74fb29944c258bb", news_file=f'{stock_name}news.csv', summary_file='data.csv', save_news=True)
         # df = sn.summarize()
         # print(df)
         pass

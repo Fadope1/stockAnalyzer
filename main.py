@@ -18,7 +18,7 @@ parser.add_argument("-ind", "--indicators", type=str, default=[], nargs='+', hel
 # use argparser to parse input_stocks, intervals, indicators
 stocks = parser.parse_args().stocks # [ "MSFT", "TSLA" ]
 intervals = parser.parse_args().intervals # [ "5y", "1y", "1m", "1w", "1d" ]
-indicators = parser.parse_args().indicators #["MACD"]
+indicators = parser.parse_args().indicators # ["MACD"]
 stockData = stock_data()
 
 for stock in stocks:
