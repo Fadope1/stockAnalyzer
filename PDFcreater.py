@@ -20,6 +20,10 @@ front_page = [
 ]
 
 landscape = [
+    { 'name': 'interval', 'type': 'T', 'x1': 0.0, 'y1': 0.0, \
+    'x2': 200.0, 'y2': 25.0, 'font': 'Arial', 'size': 20.0, 'bold': 2, \
+    'italic': 0, 'underline': 1, 'foreground': 0, 'background': 0, \
+    'align': 'C', 'text': '', 'priority': 3, },
     { 'name': '0', 'type': 'I', 'x1': 30.0, 'y1': 30.0, \
     'x2': 150.0, 'y2': 100.0, 'font': None, 'size': 0.0, 'bold': 0, 'italic': 0, \
     'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', \
@@ -39,20 +43,24 @@ landscape = [
 ] # quer format
 
 portrait = [
+    { 'name': 'interval', 'type': 'T', 'x1': 0.0, 'y1': 0.0, \
+    'x2': 200.0, 'y2': 25.0, 'font': 'Arial', 'size': 0.0, 'bold': 2, \
+    'italic': 0, 'underline': 1, 'foreground': 0, 'background': 0, \
+    'align': 'C', 'text': '', 'priority': 3, },
     { 'name': '0', 'type': 'I', 'x1': 10.0, 'y1': 10.0, \
-    'x2': 200.0, 'y2': 100.0, 'font': None, 'size': 0.0, 'bold': 0, 'italic': 0, \
+    'x2': 200.0, 'y2': 75.0, 'font': None, 'size': 0.0, 'bold': 0, 'italic': 0, \
     'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', \
     'text': 'first_pic', 'priority': 2, },
-    { 'name': '1', 'type': 'I', 'x1': 10.0, 'y1': 110.0, \
+    { 'name': '1', 'type': 'I', 'x1': 10.0, 'y1': 80.0, \
     'x2': 200.0, 'y2': 150.0, 'font': None, 'size': 0.0, 'bold': 0, 'italic': 0, \
     'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', \
     'text': 'sec_pic', 'priority': 3, },
-    { 'name': '2', 'type': 'I', 'x1': 10.0, 'y1': 210.0, \
-    'x2': 200.0, 'y2': 200.0, 'font': None, 'size': 0.0, 'bold': 0, 'italic': 0, \
+    { 'name': '2', 'type': 'I', 'x1': 10.0, 'y1': 150.0, \
+    'x2': 200.0, 'y2': 225.0, 'font': None, 'size': 0.0, 'bold': 0, 'italic': 0, \
     'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', \
     'text': 'third_pic', 'priority': 3, },
-    { 'name': '3', 'type': 'I', 'x1': 10.0, 'y1': 310.0, \
-    'x2': 200.0, 'y2': 250.0, 'font': None, 'size': 0.0, 'bold': 0, 'italic': 0, \
+    { 'name': '3', 'type': 'I', 'x1': 10.0, 'y1': 220.0, \
+    'x2': 200.0, 'y2': 300.0, 'font': None, 'size': 0.0, 'bold': 0, 'italic': 0, \
     'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', \
     'text': 'thourth_pic', 'priority': 3, },
 ] # normales format
@@ -62,6 +70,8 @@ def chartPages(stock_name:"str", interval:"str", indicators:"list", page_num=0) 
 
     chartPage = Template(format="A4", elements=portrait, title=f"{interval}diagrams") # chagen elements by argument? -> compile/ s-/getattr?
     chartPage.add_page()
+
+    chartPage["interval"] = f"Interval: {interval}" # interval as title for every page
 
     # this will create a page filled with diagrams using the interval and with different Indicators
     indicator_remaining = indicators.copy()

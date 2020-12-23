@@ -1,4 +1,15 @@
-# this version only works on linux.
+# created by fabian - fadop3
+'''
+TODO:
+- Currently only supports linux -> support windows (windows installer maybe)
+- fix plots missing dates
+- option to pass history data as csv instead of downloading it
+- fix PDFcreater -> dont save and reload the pictures -> useless :D
+- create option for landscape mode
+- get stock analytics
+- get stock news
+- add debugger
+'''
 from matplotlib import pyplot as plt
 from getStockData import stock_data
 from PDFcreater import createPDF
@@ -14,6 +25,7 @@ parser = argparse.ArgumentParser(description='Create PDF with stock information 
 parser.add_argument("-s", "--stocks", type=str, nargs='+', help='Stock name like TSLA')
 parser.add_argument("-i", "--intervals", type=str, nargs='+', help='Intervals interesting to you. E.g. 5y 1m 1w 1d')
 parser.add_argument("-ind", "--indicators", type=str, default=[], nargs='+', help='Indicators to use available in talib. E.g. MACD EMA')
+# parser.add_argument("--csv", type=str, nargs="+", default=[], help="csv file names to load in and display in pdf file")
 
 # use argparser to parse input_stocks, intervals, indicators
 stocks = parser.parse_args().stocks # [ "MSFT", "TSLA" ]
@@ -26,8 +38,10 @@ for stock in stocks:
         rawStockData = stockData.get_history(stock=stock, timestamp=interval)
 
         if rawStockData is False:
-            print("The data you are trying to receive couldnt be obtained...")
-            break
+            print(f"The stock: {stock} with the interval: {interval} you are"\
+            "trying to receive couldnt be obtained...")
+            print("Please download the data manually as csv and then use that data lol")
+            break # check if not data can be obtained
 
         rawStockData.plot(figsize=(16, 9))
         plt.ylabel("Price in €")
